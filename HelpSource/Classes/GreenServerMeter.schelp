@@ -1,0 +1,55 @@
+CLASS:: GreenServerMeter
+SUMMARY:: styled ServerMeter
+CATEGORIES:: Green
+RELATED:: Classes/ServerMeter, Classes/GreenMeter
+
+DESCRIPTION::
+Requires the GUICV quark.
+
+
+CLASSMETHODS::
+
+METHOD:: new
+A new window with LINK::Classes/GreenMeter:: instances.
+
+ARGUMENT:: parent
+
+ARGUMENT:: bounds
+
+ARGUMENT:: server
+If not specified CODE::Server.default:: will be used.
+
+ARGUMENT:: numIns
+If not specified CODE::Server.default.options.numInputBusChannels:: will be used.
+
+ARGUMENT:: numOuts
+If not specified CODE::Server.default.options.numOutputBusChannels:: will be used.
+
+ARGUMENT:: position
+A LINK::Classes/Point::.
+
+ARGUMENT:: rate
+Updates per second. (Repeated values are filtered out for efficiency.)
+
+
+INSTANCEMETHODS::
+
+PRIVATE:: initGreenServerMeter
+
+METHOD:: resetPeaks
+Same as shift-clicking on any of the top clipping buttons.
+
+
+EXAMPLES::
+
+CODE::
+s.boot;
+g= GreenServerMeter();
+g.resetPeaks;
+
+a= {WhiteNoise.ar(SinOsc.kr(0.5, (1..4)).max*0.1)}.play;
+
+//embed
+Window().layout_(VLayout(GreenServerMeter())).front;
+a.free;
+::

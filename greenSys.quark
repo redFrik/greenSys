@@ -1,0 +1,11 @@
+(
+	name: "greenSys",
+	summary: "green system including tools, gui",
+	author: "Fredrik Olofsson",
+	since: "2022",
+	version: "0.1.0",
+	license: "GPL",
+	dependencies: ["https://github.com/redFrik/GUICV"],
+	isCompatible: {Main.versionAtLeast(3, 9)},
+	schelp: "Overviews/greenSysOverview",
+)

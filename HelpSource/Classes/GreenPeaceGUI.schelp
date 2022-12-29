@@ -1,0 +1,22 @@
+CLASS:: GreenPeaceGUI
+SUMMARY:: GUI for an audio clipping detector
+CATEGORIES:: Control, Green
+RELATED:: Classes/GreenPeace
+
+
+DESCRIPTION::
+
+NOTE::
+survives CmdPeriod.
+::
+
+CLASSMETHODS::
+
+INSTANCEMETHODS::
+
+PRIVATE:: initGreenPeaceGUI
+
+EXAMPLES::
+
+CODE::
+::

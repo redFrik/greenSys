@@ -1,0 +1,6 @@
+//TODO!
+
+GreenFreqScope : SCViewHolder {
+
+
+}

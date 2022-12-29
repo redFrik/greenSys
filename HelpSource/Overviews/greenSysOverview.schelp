@@ -1,0 +1,28 @@
+TITLE:: greenSysOverview
+SUMMARY:: general green system overview
+CATEGORIES:: Green
+RELATED:: Classes/GUICV
+
+Requires the GUICV quark.
+
+Similar to redSys Quark.
+
+Work in progress. tools, gui etc.
+
+Released under GNU GPL V2 license. Please give credit if you use it extensively in your work. https://www.fredrikolofsson.com/
+
+SECTION:: meters
+
+TABLE::
+## link::Classes/GreenFreqScope:: || freq scope
+## link::Classes/GreenMeter:: || level meters
+## link::Classes/GreenPeace:: || peak detector
+## link::Classes/GreenPeaceGUI:: || peak detector with GUI
+## link::Classes/GreenScope:: || oscilloscope
+## link::Classes/GreenServerMeter:: || server level meters
+::
+
+SECTION:: tools
+TABLE::
+## link::Classes/GreenTimer:: || timer
+::

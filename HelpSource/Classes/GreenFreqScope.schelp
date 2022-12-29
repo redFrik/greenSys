@@ -1,0 +1,40 @@
+CLASS:: GreenFreqScope
+SUMMARY:: styled FreqScope
+CATEGORIES:: Green
+RELATED:: Classes/FreqScope
+
+DESCRIPTION::
+Requires GUICV quark.
+
+
+CLASSMETHODS::
+
+METHOD:: new
+
+ARGUMENT:: parent
+
+ARGUMENT:: bounds
+
+ARGUMENT:: index
+Audio bus index.
+
+ARGUMENT:: numChannels
+
+ARGUMENT:: rate
+In updates per second.
+
+
+INSTANCEMETHODS::
+
+PRIVATE:: initGreenFreqScope
+
+
+EXAMPLES::
+
+CODE::
+s.boot;
+
+
+//embed
+Window().layout_(VLayout(Button().states_([["hej"]]), GreenMeter())).front;
+::

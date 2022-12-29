@@ -1,0 +1,35 @@
+CLASS:: GreenTimer
+SUMMARY:: a very simple timer
+CATEGORIES:: Green
+
+DESCRIPTION::
+does not survive CmdPeriod.
+
+
+CLASSMETHODS::
+
+METHOD:: new
+
+ARGUMENT:: post
+a boolean.
+
+ARGUMENT:: interval
+in seconds.
+
+INSTANCEMETHODS::
+
+PRIVATE:: initGreenTimer
+
+METHOD:: currentTime
+get a snapshot.
+
+METHOD:: startTime
+when the timer was started.
+
+EXAMPLES::
+
+CODE::
+g= GreenTimer(true);
+g.currentTime;
+g.startTime;
+::

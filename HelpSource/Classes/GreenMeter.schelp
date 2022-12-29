@@ -1,0 +1,61 @@
+CLASS:: GreenMeter
+SUMMARY:: styled LevelIndicators
+CATEGORIES:: Green
+RELATED:: Classes/LevelIndicator, Classes/GreenServerMeter
+
+DESCRIPTION::
+Requires the GUICV quark.
+
+
+CLASSMETHODS::
+
+METHOD:: new
+
+ARGUMENT:: parent
+
+ARGUMENT:: bounds
+
+ARGUMENT:: target
+
+ARGUMENT:: addAction
+
+ARGUMENT:: index
+Audio bus index.
+
+ARGUMENT:: numChannels
+
+ARGUMENT:: rate
+Updates per second. (Repeated values are filtered out for efficiency.)
+
+
+INSTANCEMETHODS::
+
+PRIVATE:: initGreenMeter
+
+METHOD:: dBLow
+Get or set the minimum level in decibels (before displaying CODE::-inf::).
+
+METHOD:: resetPeaks
+Same as shift-clicking on any of the top clipping buttons.
+
+
+EXAMPLES::
+
+CODE::
+s.boot;
+a= {Dust.ar([1, 1])}.play;
+g= GreenMeter();
+a.free;
+g.close;
+
+
+a= {WhiteNoise.ar(SinOsc.kr(0.5, (1..4)).max*MouseX.kr(0, 1.25))}.play;
+g= GreenMeter(numChannels: 4);
+g.resetPeaks;  //or [shift] click on the buttons
+g.dBLow= -40;
+g.dBLow= -99;
+
+//embed
+Window().layout_(VLayout(GreenMeter())).front;
+a.free;
+::

@@ -1,0 +1,48 @@
+CLASS:: GreenPeace
+SUMMARY:: an audio clipping detector
+CATEGORIES:: Control, Green
+RELATED:: Classes/GreenPeaceGUI
+
+
+DESCRIPTION::
+
+sends back OSC and warn (post) about peaks above 1.0 or below -1.0.
+
+NOTE::
+survives CmdPeriod.
+::
+
+CLASSMETHODS::
+
+METHOD:: activate
+start num synths and an OSC responder on the bus.
+
+ARGUMENT:: bus
+
+ARGUMENT:: numChannels
+
+ARGUMENT:: dur
+max trig time in seconds.
+
+ARGUMENT:: target
+
+ARGUMENT:: func
+custom function. If not set just post.
+
+METHOD::deactivate
+stop the synths and free the OSC responder.
+
+PRIVATE:: initClass
+
+INSTANCEMETHODS::
+
+EXAMPLES::
+
+CODE::
+GreenPeace.activate
+GreenPeace.deactivate
+
+//with custom function
+GreenPeace.activate(func:{|msg| msg.postln});
+GreenPeace.deactivate;
+::

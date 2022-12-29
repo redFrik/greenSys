@@ -1,0 +1,37 @@
+CLASS:: GreenScope
+SUMMARY:: styled Stethoscope
+CATEGORIES:: Green
+RELATED:: Classes/Stethoscope
+
+DESCRIPTION::
+Requires the GUICV quark.
+
+
+CLASSMETHODS::
+
+METHOD:: new
+
+ARGUMENT:: parent
+
+ARGUMENT:: bounds
+
+ARGUMENT:: index
+Audio bus index.
+
+
+INSTANCEMETHODS::
+
+PRIVATE:: initGreenScope
+
+
+EXAMPLES::
+
+CODE::
+s.boot;
+a= {SinOsc.ar([500, 501], 0, 0.5)}.play;
+g= GreenScope();
+g.moveTo(500, 500);
+
+//embed
+Window().layout_(VLayout(GreenScope())).front;
+::
