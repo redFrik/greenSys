@@ -7,7 +7,7 @@ GreenMeter : SCViewHolder {
 	var maxPeaks;
 
 	*new {|parent, bounds, target, addAction= \addToTail, index= 0, numChannels= 2, rate= 30|
-		^super.new.initGreenMeter(parent, bounds, target, addAction, index, numChannels, rate)
+		^super.new.initGreenMeter(parent, bounds, target.asTarget, addAction, index, numChannels, rate)
 	}
 
 	initGreenMeter {|parent, bounds, target, addAction, index, numChannels, rate|
@@ -17,11 +17,10 @@ GreenMeter : SCViewHolder {
 		var fontSmall= Font(*skin.fontSmallSpecs);
 		var fontHeight= "".bounds(font).height;
 		var minWidth= "-99".bounds(font).width;
-		var server= (target= target.asTarget).server;
 
 		var responder;
 		var synth;
-		var startFunc= {
+		var startFunc= {|server|
 			var id= UniqueID.next;
 			var lastPeaks= 0.dup(numChannels);
 			var lastRMSs= 0.dup(numChannels);
@@ -109,16 +108,16 @@ GreenMeter : SCViewHolder {
 		maxPeaks= -inf.dup(numChannels);
 		CmdPeriod.doOnce({this.close});
 
-		if(server.serverRunning, {
-			startFunc.value;
+		if(target.server.serverRunning, {
+			startFunc.value(target.server);
 		}, {
-			ServerTree.add(startFunc, server);
+			ServerTree.add(startFunc, target.server);
 		});
 
 		view.onClose_({
 			responder.free;
 			synth.free;
-			ServerTree.remove(startFunc, server);
+			ServerTree.remove(startFunc, target.server);
 		});
 	}
 
