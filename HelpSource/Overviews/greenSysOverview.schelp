@@ -17,7 +17,7 @@ TABLE::
 ## link::Classes/GreenFreqScope:: || freq scope
 ## link::Classes/GreenMeter:: || level meters
 ## link::Classes/GreenPeace:: || peak detector
-## link::Classes/GreenPeaceGUI:: || peak detector with GUI
+## link::Classes/GreenPeaceGUI:: || GUI for peak detector
 ## link::Classes/GreenScope:: || oscilloscope
 ## link::Classes/GreenServerMeter:: || server level meters
 ::

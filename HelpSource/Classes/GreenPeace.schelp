@@ -6,43 +6,47 @@ RELATED:: Classes/GreenPeaceGUI
 
 DESCRIPTION::
 
-sends back OSC and warn (post) about peaks above 1.0 or below -1.0.
+Detect clipping signals (peaks above 1.0 or below -1.0) and warn (post). Use the STRONG::action:: argument for custom functions.
 
 NOTE::
-survives CmdPeriod.
+Survives LINK::Classes/CmdPeriod:: and server reboot.
 ::
+
 
 CLASSMETHODS::
 
+PRIVATE:: initClass
+
 METHOD:: activate
-start num synths and an OSC responder on the bus.
+Starts the detector on the bus.
 
 ARGUMENT:: bus
 
 ARGUMENT:: numChannels
 
 ARGUMENT:: dur
-max trig time in seconds.
+Maximum retrigger time in seconds. Avoids fast retriggering directly after a peak is detected.
 
 ARGUMENT:: target
+The detector will be placed directly after this in the server tree.
 
-ARGUMENT:: func
-custom function. If not set just post.
+ARGUMENT:: action
+A custom LINK::Classes/Function::. If not set the default will just post warnings when clipping. The arguments passed in will be the same as for an LINK::Classes/OSCdef:: i.e. CODE::msg, time, addr, recvPort::.
 
-METHOD::deactivate
-stop the synths and free the OSC responder.
+METHOD:: deactivate
+Stops the detector and free the internal resources.
 
-PRIVATE:: initClass
-
-INSTANCEMETHODS::
 
 EXAMPLES::
 
 CODE::
-GreenPeace.activate
-GreenPeace.deactivate
+GreenPeace.activate;
+s.boot;
+a= {SoundIn.ar}.play;  //careful with feedback
+a.free;
+GreenPeace.deactivate;
 
 //with custom function
-GreenPeace.activate(func:{|msg| msg.postln});
+GreenPeace.activate(action: {|msg| msg.postln});
 GreenPeace.deactivate;
 ::
