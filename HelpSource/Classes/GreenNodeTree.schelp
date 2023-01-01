@@ -1,0 +1,57 @@
+CLASS:: GreenNodeTree
+SUMMARY:: node tree monitor
+CATEGORIES:: Green
+RELATED:: Classes/Server
+
+
+DESCRIPTION::
+
+Requires the GUICV quark.
+
+Just takes the result of CODE::s.queryAllNodes(true):: and displays it in a window.
+
+NOTE::
+Will not work together with the built-in plotTree.
+::
+
+NOTE::
+All values are rounded to two decimal places.
+::
+
+
+CLASSMETHODS::
+
+METHOD:: new
+Create a new GUI.
+
+ARGUMENT:: parent
+
+ARGUMENT:: bounds
+
+ARGUMENT:: server
+Which LINK::Classes/Server::.
+
+ARGUMENT:: rate
+How fast to update the information (in updates per second).
+
+
+INSTANCEMETHODS::
+
+PRIVATE:: initGreenNodeTree
+
+
+EXAMPLES::
+
+CODE::
+s.boot;
+g= GreenNodeTree();
+
+a= {|freq=500| SinOsc.ar(freq+[0,1],0,0.1)}.play;
+a.set(\freq, 400);
+
+b= Group();
+c= {|freq=500| SinOsc.ar(freq+[0,1],0,0.1)}.play(target:b);
+
+a.free; b.free;
+g.close;
+::

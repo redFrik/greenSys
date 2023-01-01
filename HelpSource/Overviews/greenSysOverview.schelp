@@ -25,4 +25,5 @@ TABLE::
 SECTION:: tools
 TABLE::
 ## LINK::Classes/GreenTimer:: || timer
+## LINK::Classes/GreenNodeTree:: || node tree monitor
 ::
