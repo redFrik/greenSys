@@ -44,8 +44,6 @@ GreenPeaceGUI : SCViewHolder {
 		.onClose_({GreenPeace.deactivate});
 
 		if(bounds.isNil, {view.front});
-
-		CmdPeriod.doOnce({view.close});
 	}
 
 	resetPeaks {

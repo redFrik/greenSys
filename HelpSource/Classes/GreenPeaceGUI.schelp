@@ -1,6 +1,6 @@
 CLASS:: GreenPeaceGUI
 SUMMARY:: GUI for an audio clipping detector
-CATEGORIES:: Control, Green
+CATEGORIES:: Green
 RELATED:: Classes/GreenPeace
 
 
@@ -9,10 +9,6 @@ DESCRIPTION::
 Requires the GUICV quark.
 
 The buttons will display bus number when not clipping, and overshoot amplituden when a signal on the bus is outside of the range -1.0 to 1.0.
-
-NOTE::
-Does not survive LINK::Classes/CmdPeriod::.
-::
 
 NOTE::
 LINK::Classes/GreenPeace:: will be deactivated when the GUI is closed.
@@ -61,10 +57,9 @@ g= GreenPeaceGUI()
 a= {SoundIn.ar}.play;
 
 g.resetPeaks;
-
 g.close;
-a.free;
 
 //embed
-Window().layout_(VLayout(GreenPeaceGUI(bus: 8, numChannels: 8))).front;
+Window().layout_(VLayout(GreenPeaceGUI(bus: 0, numChannels: 8))).front;
+a.free;
 ::

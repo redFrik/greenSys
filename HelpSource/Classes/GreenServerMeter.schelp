@@ -1,7 +1,7 @@
 CLASS:: GreenServerMeter
 SUMMARY:: styled ServerMeter
 CATEGORIES:: Green
-RELATED:: Classes/ServerMeter, Classes/GreenMeter
+RELATED:: Classes/ServerMeter, Classes/GreenMeter, Classes/GreenScope
 
 DESCRIPTION::
 Requires the GUICV quark.
@@ -52,4 +52,6 @@ a= {WhiteNoise.ar(SinOsc.kr(0.5, (1..4)).max*0.1)}.play;
 //embed
 Window().layout_(VLayout(GreenServerMeter())).front;
 a.free;
+
+g.close;
 ::

@@ -58,4 +58,6 @@ g.dBLow= -99;
 //embed
 Window().layout_(VLayout(GreenMeter())).front;
 a.free;
+
+g.close;
 ::

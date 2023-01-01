@@ -1,7 +1,7 @@
 CLASS:: GreenScope
-SUMMARY:: styled Stethoscope
+SUMMARY:: Two channel XY scope
 CATEGORIES:: Green
-RELATED:: Classes/Stethoscope
+RELATED:: Classes/Stethoscope, Classes/GreenServerMeter
 
 DESCRIPTION::
 Requires the GUICV quark.
@@ -15,8 +15,11 @@ ARGUMENT:: parent
 
 ARGUMENT:: bounds
 
+ARGUMENT:: server
+If not specified CODE::Server.default:: will be used.
+
 ARGUMENT:: index
-Audio bus index.
+Audio bus index to scope.
 
 
 INSTANCEMETHODS::
@@ -34,4 +37,6 @@ g.moveTo(500, 500);
 
 //embed
 Window().layout_(VLayout(GreenScope())).front;
+
+g.close;
 ::

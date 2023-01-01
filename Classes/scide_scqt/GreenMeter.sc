@@ -35,7 +35,7 @@ GreenMeter : SCViewHolder {
 							maxPeaks[i]= peak;
 							{
 								buttons[i].states_([
-									[" ", skin.background, skin.background],
+									buttons[i].states[0],
 									[GUICV.fixDec(maxPeaks[i], 1), skin.background, skin.fontColor]
 								]).value_(1);
 							}.defer;
@@ -106,12 +106,10 @@ GreenMeter : SCViewHolder {
 		});
 
 		maxPeaks= -inf.dup(numChannels);
-		CmdPeriod.doOnce({this.close});
 
+		ServerTree.add(startFunc, target.server);
 		if(target.server.serverRunning, {
 			startFunc.value(target.server);
-		}, {
-			ServerTree.add(startFunc, target.server);
 		});
 
 		view.onClose_({

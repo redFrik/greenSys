@@ -1,5 +1,4 @@
 //TODO override cmd+m somehow
-//TODO permanent cmdperiod?
 
 //related: GreenMeter
 
@@ -61,8 +60,6 @@ GreenServerMeter : SCViewHolder {
 			.moveTo(position.x, position.y)
 			.front;
 		});
-
-		CmdPeriod.doOnce({view.close});  //TODO keep this?
 	}
 
 	resetPeaks {
