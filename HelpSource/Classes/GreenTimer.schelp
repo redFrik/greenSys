@@ -1,6 +1,7 @@
 CLASS:: GreenTimer
 SUMMARY:: a very simple timer
 CATEGORIES:: Green
+RELATED:: SystemClock
 
 DESCRIPTION::
 does not survive CmdPeriod.

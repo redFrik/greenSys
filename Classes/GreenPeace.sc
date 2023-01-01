@@ -30,6 +30,7 @@ GreenPeace {
 		aaction= action ? {|msg| "clip! bus: % val: %".format(msg[3].asInteger, msg[4]).warn};
 
 		synths.do{|x| x.free};
+
 		ServerTree.add(startFunc, ttarget.server);
 		if(ttarget.server.serverRunning, {
 			startFunc.value;

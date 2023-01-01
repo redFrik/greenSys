@@ -8,7 +8,7 @@ GreenTimer {
 	var <startTime;
 
 	*new {|post= false, interval= 1|
-		^super.new.initGreenTimer(post, interval);
+		^super.new.initGreenTimer(post, interval)
 	}
 
 	initGreenTimer {|post, interval|
@@ -22,6 +22,6 @@ GreenTimer {
 	}
 
 	currentTime {
-		^SystemClock.seconds-startTime;
+		^SystemClock.seconds-startTime
 	}
 }

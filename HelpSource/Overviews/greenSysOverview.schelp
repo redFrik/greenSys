@@ -14,15 +14,15 @@ Released under GNU GPL V2 license. Please give credit if you use it extensively 
 SECTION:: meters
 
 TABLE::
-## link::Classes/GreenFreqScope:: || freq scope
-## link::Classes/GreenMeter:: || level meters
-## link::Classes/GreenPeace:: || peak detector
-## link::Classes/GreenPeaceGUI:: || GUI for peak detector
-## link::Classes/GreenScope:: || oscilloscope
-## link::Classes/GreenServerMeter:: || server level meters
+## LINK::Classes/GreenFreqScope:: || freq scope
+## LINK::Classes/GreenMeter:: || level meters
+## LINK::Classes/GreenPeace:: || peak detector
+## LINK::Classes/GreenPeaceGUI:: || GUI for peak detector
+## LINK::Classes/GreenScope:: || two channel XY scope
+## LINK::Classes/GreenServerMeter:: || server level meters
 ::
 
 SECTION:: tools
 TABLE::
-## link::Classes/GreenTimer:: || timer
+## LINK::Classes/GreenTimer:: || timer
 ::
