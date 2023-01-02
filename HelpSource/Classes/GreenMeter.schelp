@@ -23,6 +23,7 @@ ARGUMENT:: index
 Audio bus index.
 
 ARGUMENT:: numChannels
+Number of audio channels.
 
 ARGUMENT:: rate
 Updates per second. (Repeated values are filtered out for efficiency.)

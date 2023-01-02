@@ -1,27 +1,21 @@
 GreenScope : SCViewHolder {
 
+	var scopeView, bus, synth;
+
 	*new {|parent, bounds, server, index= 0|
 		^super.new.initGreenScope(parent, bounds, server, index)
 	}
 
-	initGreenScope {|parent, bounds, argServer, index|
+	initGreenScope {|parent, bounds, server, index|
 
 		var skin= GUI.skins.guiCV;
-		var scopeView, userView;
-		var server= argServer ? Server.default;
+		var userView;
 
-		var bus= Bus(\audio, index, 2, server);
-		var synth;
-		var startFunc= {|server|
-			synth= BusScopeSynth(server);
-			synth.play(2048, bus, 1024);  //TODO experiment with these
-			scopeView
-			.bufnum_(synth.bufferIndex)
-			.server_(server)
-			.start;
-		};
+		server= server ? Server.default;
+		bus= Bus(\audio, index, 2, server);
 
 		scopeView= ScopeView(parent, bounds)
+		.server_(server)
 		.style_(2)
 		.waveColors_(skin.highlight!2)
 		.yZoom_(0.5.sqrt);
@@ -54,16 +48,30 @@ GreenScope : SCViewHolder {
 			view.front;
 		});
 
-		ServerTree.add(startFunc, server);
+		ServerQuit.add(this, server);
+		ServerTree.add(this, server);
 		if(server.serverRunning, {
-			startFunc.value(server);
+			this.doOnServerTree;
 		});
 
 		scopeView.onClose_({
 			scopeView.stop;
-			bus.free;
 			synth.free;
-			ServerTree.remove(startFunc, server);
+			bus.free;
+			ServerQuit.remove(this, server);
+			ServerTree.remove(this, server);
 		});
+	}
+
+	doOnServerTree {|server|
+		synth= BusScopeSynth(server);
+		synth.play(2048, bus, 1024);  //TODO experiment with these
+		scopeView
+		.bufnum_(synth.bufferIndex)
+		.start;
+	}
+
+	doOnServerQuit {|server|
+		scopeView.stop;
 	}
 }

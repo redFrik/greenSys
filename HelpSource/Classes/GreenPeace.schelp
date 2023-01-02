@@ -21,8 +21,10 @@ METHOD:: activate
 Starts the detector on the bus.
 
 ARGUMENT:: bus
+Which audio bus to monitor.
 
 ARGUMENT:: numChannels
+Number of audio channels.
 
 ARGUMENT:: dur
 Maximum retrigger time in seconds. Avoids fast retriggering directly after a peak is detected.
@@ -31,7 +33,7 @@ ARGUMENT:: target
 The detector will be placed directly after this in the server tree.
 
 ARGUMENT:: action
-A custom LINK::Classes/Function::. If not set the default will just post warnings when clipping. The arguments passed in will be the same as for an LINK::Classes/OSCdef:: i.e. CODE::msg, time, addr, recvPort::.
+A custom LINK::Classes/Function::. If not set the default will just post warnings when clipping. The arguments passed in will be the same as for an LINK::Classes/OSCFunc:: i.e. CODE::msg, time, addr, recvPort::.
 
 METHOD:: deactivate
 Stops the detector and free the internal resources.

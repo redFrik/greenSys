@@ -28,8 +28,10 @@ ARGUMENT:: parent
 ARGUMENT:: bounds
 
 ARGUMENT:: bus
+Which audio bus to monitor.
 
 ARGUMENT:: numChannels
+Number of audio channels.
 
 ARGUMENT:: dur
 Maximum retrigger time in seconds. Avoids fast retriggering directly after a peak is detected.
