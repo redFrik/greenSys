@@ -58,6 +58,7 @@ GreenServerMeter : SCViewHolder {
 				(skin.buttonHeight+skin.spacing*3)+skin.sliderHeight
 			)
 			.moveTo(position.x, position.y)
+			.name_(this.class.name)
 			.front;
 		});
 	}

@@ -43,7 +43,11 @@ GreenPeaceGUI : SCViewHolder {
 		.background_(skin.background)
 		.onClose_({GreenPeace.deactivate});
 
-		if(bounds.isNil, {view.front});
+		if(bounds.isNil, {
+			view
+			.name_(this.class.name)
+			.front;
+		});
 	}
 
 	resetPeaks {

@@ -57,6 +57,7 @@ GreenMeter : SCViewHolder {
 		if(bounds.isNil, {
 			view.resizeTo((minWidth+1)*numChannels, (fontHeight*2)+skin.sliderHeight)
 			.moveTo(0, Window.screenBounds.height*0.85)
+			.name_(this.class.name)
 			.front;
 		});
 

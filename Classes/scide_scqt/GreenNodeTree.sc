@@ -29,7 +29,9 @@ GreenNodeTree : SCViewHolder {
 		.hasBorder_(false);
 
 		if(bounds.isNil, {
-			view.front;
+			view
+			.name_(this.class.name)
+			.front;
 			view.resizeTo(640, 480);
 		});
 

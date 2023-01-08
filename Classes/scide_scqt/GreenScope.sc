@@ -45,7 +45,9 @@ GreenScope : SCViewHolder {
 		.minSize_(Size(150, 150));
 
 		if(bounds.isNil, {
-			view.front;
+			view
+			.name_(this.class.name)
+			.front;
 		});
 
 		ServerQuit.add(this, server);
