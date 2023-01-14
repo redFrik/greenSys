@@ -19,6 +19,7 @@ GreenMeter : SCViewHolder {
 		var minWidth= "-99".bounds(font).width;
 
 		var id, lastPeaks, lastRMSs;
+		var server= target.server;
 
 		texts= {
 			GUICV.staticText.string_("-∞")
@@ -99,7 +100,7 @@ GreenMeter : SCViewHolder {
 					}.defer;
 				});
 			};
-		}, "greenMeter"++id, target.server.addr).permanent_(true).disable;
+		}, "greenMeter"++id, server.addr).permanent_(true).disable;
 
 		makeSynth= {
 			SynthDef("greenMeter_%__%".format(numChannels, id).asSymbol, {
@@ -108,17 +109,17 @@ GreenMeter : SCViewHolder {
 			}).play(target, addAction: addAction);
 		};
 
-		ServerQuit.add(this, target.server);
-		ServerTree.add(this, target.server);
-		if(target.server.serverRunning, {
-			this.doOnServerTree;
+		ServerQuit.add(this, server);
+		ServerTree.add(this, server);
+		if(server.serverRunning, {
+			this.doOnServerTree(server);
 		});
 
 		view.onClose_({
 			responder.free;
 			synth.free;
-			ServerQuit.remove(this, target.server);
-			ServerTree.remove(this, target.server);
+			ServerQuit.remove(this, server);
+			ServerTree.remove(this, server);
 		});
 	}
 

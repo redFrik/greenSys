@@ -53,7 +53,7 @@ GreenScope : SCViewHolder {
 		ServerQuit.add(this, server);
 		ServerTree.add(this, server);
 		if(server.serverRunning, {
-			this.doOnServerTree;
+			this.doOnServerTree(server);
 		});
 
 		scopeView.onClose_({

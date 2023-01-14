@@ -18,7 +18,8 @@ GreenNodeTree : SCViewHolder {
 
 		staticText= GUICV.staticText
 		.fixedWidth_(1440)  //TODO improve
-		.string_("NODE TREE");
+		.string_("NODE TREE")
+		.stringColor_(skin.foreground);
 
 		canvas= View().background_(skin.background).layout_(
 			VLayout([staticText, align: \top]).margins_(skin.margin.asArray)
@@ -100,7 +101,9 @@ GreenNodeTree : SCViewHolder {
 
 		ServerQuit.add(this, server);
 		ServerTree.add(this, server);
-		this.doOnServerTree;
+		if(server.serverRunning, {
+			this.doOnServerTree(server);
+		});
 
 		view.onClose_({
 			task.stop;
