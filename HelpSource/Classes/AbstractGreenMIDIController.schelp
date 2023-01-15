@@ -1,0 +1,49 @@
+CLASS:: AbstractGreenMIDIController
+SUMMARY:: abstract class for MIDI controllers
+CATEGORIES:: Green
+RELATED:: Classes/MIDIIn, Overviews/greenSysOverview
+
+DESCRIPTION::
+
+Requires the GUICV quark installed.
+
+NOTE::
+This is an abstract class. Do not instantiate - use the subclasses.
+::
+
+CLASSTREE:: AbstractGreenMIDIController
+
+
+CLASSMETHODS::
+
+METHOD:: new
+Initialise LINK::Classes/MIDIClient:: (if not already), connect LINK::Classes/MIDIIn:: to controller and set up LINK::Classes/MIDIFunc:: responders.
+
+ARGUMENT:: within
+Used for softSet knobs and sliders. Set this to CODE::1.0:: for direct control (then it will work like .set).
+
+METHOD:: deviceName
+subclassResponsibility
+
+
+INSTANCEMETHODS::
+
+PRIVATE:: initAbstractGreenMIDIControl, prSetup, prSetupCC
+
+METHOD:: cvs
+A dictionary with controller names and LINK::Classes/CV:: instances.
+
+METHOD:: debug
+A LINK::Classes/Boolean:: flag for posting incoming MIDI messages.
+
+METHOD:: within
+Used for softSet. See LINK::#*new:: above.
+
+METHOD:: free
+Free all responders.
+
+METHOD:: gui
+Create a GUI.
+
+ARGUMENT:: position
+A LINK::Classes/Point:: where to place the window.

@@ -1,0 +1,52 @@
+CLASS:: GreenNanoKontrol2
+SUMMARY:: for Korg nanoKONTROL v2
+CATEGORIES:: Green
+RELATED:: Classes/GreenNanoKontrol2GUI, Classes/GreenNanoKontrol, Overviews/greenSysOverview
+
+DESCRIPTION::
+A class for dealing with this MIDI controller. Version 2 with 8 sliders, 8 knobs.
+
+NOTE::
+This assume scene #1, factory settings. Does not work for the other scenes or any custom CC mappings.
+::
+
+CLASSMETHODS::
+
+METHOD:: ctrlSymbols
+An LINK::Classes/Array:: of symbol keys for the left hand side control buttons. Mainly used internally for the GUI.
+
+
+INSTANCEMETHODS::
+
+PRIVATE:: prSetup
+
+
+EXAMPLES::
+
+CODE::
+g= GreenNanoKontrol2();
+g.debug= true;  //just post
+g.debug= false;
+
+g.cvs.keys;  //available keys
+
+g.slider1.value;  //post CV value for slider1
+g.cvs[\slider1].value;  //same thing
+
+g.slider1.value= 0.5;  //seldom needed but value can also be set
+
+g.slider1.addAction({|cv, val| val.postln});  //note: using softSet so might need to wiggle
+
+f= {|cv, val| (val*1000).postln};
+g.slider1.addAction(f);  //several actions can be added
+g.slider1.removeAction(f);  //and removed
+
+g.button1_S.value;  //top button next to slider1
+g.button1_S.addAction({|cv, val| ("button1_S changed value to"+val).postln});
+g.button1_S.value_(1);  //set also triggers the action
+g.button1_S.value_(0);
+
+g.gui;  //optional GUI
+
+g.free;  //clean up responders and actions - important
+::

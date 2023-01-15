@@ -1,0 +1,38 @@
+CLASS:: GreenNanoKontrol2GUI
+SUMMARY:: GUI for Korg v2
+CATEGORIES:: Green
+RELATED:: Classes/GreenNanoKontrol2, Overviews/greenSysOverview
+
+DESCRIPTION::
+GUI
+
+
+CLASSMETHODS::
+
+METHOD:: new
+
+ARGUMENT:: parent
+
+ARGUMENT:: bounds
+
+ARGUMENT:: nanoKontrol
+A LINK::Classes/GreenNanoKontrol2:: instance.
+
+METHOD:: ctrlSymbols
+An LINK::Classes/Array:: of symbol keys for the left hand side control buttons. Mainly used internally for the GUI.
+
+
+INSTANCEMETHODS::
+
+PRIVATE:: initGreenNanoKontrol2GUI
+
+
+EXAMPLES::
+
+CODE::
+g= GreenNanoKontrol2();
+h= g.gui;
+g.slider1.addAction({|cv, val| val.postln});
+g.slider1.value= 1.0.rand;
+h.close;
+::
