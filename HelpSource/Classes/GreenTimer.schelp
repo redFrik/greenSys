@@ -1,36 +1,70 @@
 CLASS:: GreenTimer
 SUMMARY:: a very simple timer
 CATEGORIES:: Green
-RELATED:: SystemClock
+RELATED:: Classes/SystemClock
 
 DESCRIPTION::
-does not survive CmdPeriod.
+
+NOTE::
+Does not survive CmdPeriod.
+::
 
 
 CLASSMETHODS::
 
 METHOD:: new
 
-ARGUMENT:: post
-a boolean.
+ARGUMENT:: alarm
+A time in seconds.
+
+ARGUMENT:: action
+A LINK::Classes/Function:: to be evaluated after STRONG::alarm:: seconds. The action function can return a number and then it will be rescheduled (see LINK::Classes/SystemClock#*sched::).
+
+METHOD:: newPost
+Convenience method for setting up an action that just post current time.
 
 ARGUMENT:: interval
-in seconds.
+A time in seconds.
+
+ARGUMENT:: formatted
+A LINK::Classes/Boolean::. Post raw seconds or formatted HMS string.
+
 
 INSTANCEMETHODS::
 
 PRIVATE:: initGreenTimer
 
 METHOD:: currentTime
-get a snapshot.
+Elapsed time in seconds.
+
+RETURNS:: a LINK::Classes/Float::.
+
+METHOD:: currentTimeHMS
+Elapsed time as a formatted LINK::Classes/String:: (hours, minutes, seconds).
+
+RETURNS:: a LINK::Classes/String::.
 
 METHOD:: startTime
-when the timer was started.
+When the timer was started. (CODE::SystemClock.seconds::)
+
+RETURNS:: a LINK::Classes/Float::.
+
+METHOD:: stop
+Stop the timer and ignore the alarm action.
+
 
 EXAMPLES::
 
 CODE::
-g= GreenTimer(true);
-g.currentTime;
-g.startTime;
+g= GreenTimer();
+g.currentTime;  //elapsed time in seconds
+g.currentTimeHMS;  //formatted string
+g.startTime;  //less useful
+g.stop;
+
+g= GreenTimer(4, {|timer| "hej".postln});
+//post after 4 sec
+
+g= GreenTimer.newPost;  //default is once per second
+g.stop;
 ::

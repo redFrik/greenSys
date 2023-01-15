@@ -1,27 +1,43 @@
-//TODO option to survive CmdPeriod
-//TODO format output a bit better?
-//TODO alarm
-//TODO GreenTimerGUI
+//TODO cmd period survive?
 
 GreenTimer {
 
 	var <startTime;
+	var stopped;
 
-	*new {|post= false, interval= 1|
-		^super.new.initGreenTimer(post, interval)
+	*new {|alarm, action|
+		^super.new.initGreenTimer(alarm, action)
 	}
 
-	initGreenTimer {|post, interval|
+	*newPost {|interval= 1, formatted= false|
+		^this.new(interval,
+			if(formatted, {
+				{|t| t.currentTimeHMS.postln; interval}
+			}, {
+				{|t| t.currentTime.postln; interval}
+			})
+		)
+	}
+
+	initGreenTimer {|alarm, action|
+		stopped= false;
 		startTime= SystemClock.seconds;
-		if(post, {
-			SystemClock.sched(0, {
-				this.currentTime.postln;
-				interval;
-			});
+		SystemClock.sched(alarm, {
+			if(stopped.not, {
+				action.(this);
+			}, {nil});
 		});
 	}
 
 	currentTime {
 		^SystemClock.seconds-startTime
+	}
+
+	currentTimeHMS {|decimalPlaces= 3|
+		^this.currentTime.asTimeString(decimalPlaces: decimalPlaces)
+	}
+
+	stop {
+		stopped= true;
 	}
 }
