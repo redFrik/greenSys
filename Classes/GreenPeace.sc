@@ -20,7 +20,9 @@ GreenPeace {
 		abus= bus;
 		num= numChannels;
 		synths.do{|x| x.free};
-		makeSynths= {{|i| Synth(\greenPeace, [\bus, bus+i, \dur, dur], target, \addAfter)}.dup(num)};
+		makeSynths= {
+			{|i| Synth(\greenPeace, [\bus, bus+i, \dur, dur], target, \addAfter)}.dup(num)
+		};
 		action= action ? {|msg| "clip! bus: % val: %".format(msg[3].asInteger, msg[4]).warn};
 		responder.free;
 		responder= OSCFunc(action, \greenPeace, server.addr).permanent_(true);

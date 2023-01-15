@@ -32,7 +32,10 @@ GreenPeaceGUI : SCViewHolder {
 			})
 			.canFocus_(false)
 			.minSize_(Size(skin.knobWidth, skin.buttonHeight))
-			.states_([[bus+i, skin.fontColor, skin.foreground], ["", skin.background, skin.highlight]])
+			.states_([
+				[bus+i, skin.fontColor, skin.foreground],
+				["", skin.background, skin.highlight]
+			])
 		}.dup(numChannels);
 
 		view= View(parent, bounds).layout_(
