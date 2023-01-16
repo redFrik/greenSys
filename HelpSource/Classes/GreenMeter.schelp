@@ -1,6 +1,6 @@
 CLASS:: GreenMeter
 SUMMARY:: styled LevelIndicators
-CATEGORIES:: Green
+CATEGORIES:: Green>Meters
 RELATED:: Classes/LevelIndicator, Classes/GreenServerMeter
 
 DESCRIPTION::

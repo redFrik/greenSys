@@ -1,6 +1,6 @@
 CLASS:: GreenServerMeter
 SUMMARY:: styled ServerMeter
-CATEGORIES:: Green
+CATEGORIES:: Green>Meters
 RELATED:: Classes/ServerMeter, Classes/GreenMeter, Classes/GreenScope
 
 DESCRIPTION::

@@ -1,6 +1,6 @@
 CLASS:: GreenNanoKontrol
 SUMMARY:: for Korg nanoKONTROL v1
-CATEGORIES:: Green
+CATEGORIES:: Green>MIDI
 RELATED:: Classes/GreenNanoKontrolGUI, Classes/GreenNanoKontrol2, Overviews/greenSysOverview
 
 DESCRIPTION::

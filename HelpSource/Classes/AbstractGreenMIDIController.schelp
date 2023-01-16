@@ -1,6 +1,6 @@
 CLASS:: AbstractGreenMIDIController
 SUMMARY:: abstract class for MIDI controllers
-CATEGORIES:: Green
+CATEGORIES:: Green>MIDI
 RELATED:: Classes/MIDIIn, Overviews/greenSysOverview
 
 DESCRIPTION::
@@ -37,7 +37,10 @@ METHOD:: debug
 A LINK::Classes/Boolean:: flag for posting incoming MIDI messages.
 
 METHOD:: within
-Used for softSet. See LINK::#*new:: above.
+Range used for softSet. See LINK::#*new:: above.
+
+METHOD:: withinAction
+Get or set the LINK::Classes/Function:: that is evaluated when softSet changes state. Mainly used internally for GUI classes to graphically indicate if a MIDI controller value is within range or not. Three arguments are passed in: a key LINK::Classes/Symbol::, the LINK::Classes/CV::, and the LINK::Classes/Boolean:: state.
 
 METHOD:: free
 Free all responders.
