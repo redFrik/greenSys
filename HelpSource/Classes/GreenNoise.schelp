@@ -1,0 +1,19 @@
+CLASS:: GreenNoise
+SUMMARY:: the background noise of the world
+CATEGORIES:: UGens>Generators>Stochastic, UGens>Noise
+
+DESCRIPTION::
+https://en.wikipedia.org/wiki/Colors_of_noise#Green_noise
+
+
+CLASSMETHODS::
+
+METHOD:: ar
+
+
+EXAMPLES::
+
+CODE::
+s.boot;
+{GreenNoise.ar()!2*0.25}.play
+::
