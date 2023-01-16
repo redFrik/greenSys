@@ -1,29 +1,46 @@
 TITLE:: greenSysOverview
-SUMMARY:: general green system overview
+SUMMARY:: Green system overview
 CATEGORIES:: Green
 RELATED:: Classes/GUICV
 
+Work in progress. Tools, GUI etc. Similar to redSys Quark.
+
 Requires the GUICV quark.
 
-Similar to redSys Quark.
-
-Work in progress. tools, gui etc.
-
-Released under GNU GPL V2 license. Please give credit if you use it extensively in your work. https://www.fredrikolofsson.com/
-
-SECTION:: meters
-
-TABLE::
-## LINK::Classes/GreenFreqScope:: || freq scope
-## LINK::Classes/GreenMeter:: || level meters
-## LINK::Classes/GreenPeace:: || peak detector
-## LINK::Classes/GreenPeaceGUI:: || GUI for peak detector
-## LINK::Classes/GreenScope:: || two channel XY scope
-## LINK::Classes/GreenServerMeter:: || server level meters
+NOTE::
+Many classes require SuperCollider with LINK::Classes/QtGUI:: installed, but several can also be used without a GUI (for running SuperCollider 'headless').
 ::
 
-SECTION:: tools
+
+SECTION:: Meters and Scopes
+
 TABLE::
-## LINK::Classes/GreenTimer:: || timer
-## LINK::Classes/GreenNodeTree:: || node tree monitor
+## LINK::Classes/GreenFreqScope:: || FFT scope (GUI)
+## LINK::Classes/GreenMeter:: || Level meters (GUI)
+## LINK::Classes/GreenPeace:: || Peak detector
+## LINK::Classes/GreenPeaceGUI:: || GUI for GreenPeace
+## LINK::Classes/GreenScope:: || Two channel XY scope (GUI)
+## LINK::Classes/GreenServerMeter:: || Server level meters (GUI)
+::
+
+SECTION:: MIDI
+
+TABLE::
+## LINK::Classes/AbstractGreenMIDIController:: || abstract MIDI controller class
+## LINK::Classes/GreenNanoKontrol:: || nanoKONTROL v1 MIDI controller
+## LINK::Classes/GreenNanoKontrolGUI:: || GUI for GreenNanoKontrol
+## LINK::Classes/GreenNanoKontrol2:: || nanoKONTROL v2 MIDI controller
+## LINK::Classes/GreenNanoKontrol2GUI:: || GUI for GreenNanoKontrol2
+::
+
+SECTION:: Tools
+TABLE::
+## LINK::Classes/GreenNodeTree:: || Node tree monitor (GUI)
+## LINK::Classes/GreenTest:: || Generate test signals
+## LINK::Classes/GreenTimer:: || Timer
+::
+
+SECTION:: UGens
+TABLE::
+## LINK::Classes/GreenNoise:: || Filtered white noise
 ::
