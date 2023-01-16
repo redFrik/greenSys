@@ -14,6 +14,8 @@ GreenNanoKontrol2 : AbstractGreenMIDIController {
 
 	*deviceName {^"nanoKONTROL2"}
 
+	stop {^cvs[\stop]}
+
 	gui {|position|
 		^GreenNanoKontrol2GUI(nanoKontrol:this).moveTo(*position.asRect.asArray.drop(2))
 	}

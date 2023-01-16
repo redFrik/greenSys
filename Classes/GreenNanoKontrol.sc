@@ -10,6 +10,9 @@ GreenNanoKontrol : AbstractGreenMIDIController {
 
 	*deviceName {^"nanoKONTROL"}
 
+	loop {^cvs[\loop]}
+	stop {^cvs[\stop]}
+
 	gui {|position|
 		^GreenNanoKontrolGUI(nanoKontrol:this).moveTo(*position.asRect.asArray.drop(2))
 	}
