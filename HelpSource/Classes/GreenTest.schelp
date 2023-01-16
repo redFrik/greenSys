@@ -1,0 +1,36 @@
+CLASS:: GreenTest
+SUMMARY:: Generate test signals
+CATEGORIES:: Green>Tools
+RELATED:: Classes/RedTest
+
+
+CLASSMETHODS::
+
+METHOD:: speaker, speaker2
+Start speaker test.
+
+ARGUMENT:: channels
+An LINK::Classes/Array:: of output channel indices.
+
+ARGUMENT:: amp
+A LINK::Classes/Float:: amplitude.
+
+ARGUMENT:: dur
+Change duration between notes in seconds.
+
+METHOD:: stop
+Stop all sounds started by link::#*speaker:: or link::#*speaker2::.
+
+
+INSTANCEMETHODS::
+
+
+EXAMPLES::
+
+CODE::
+GreenTest.speaker();  //pink noise in stereo
+GreenTest.stop;
+
+a= GreenTest.speaker2([0, 1, 2, 4]);  //ping in 4ch
+a.stop;
+::
