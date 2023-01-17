@@ -47,7 +47,7 @@ AbstractGreenMIDIController {
 
 	prSetup {^this.subclassResponsibility(thisMethod)}
 
-	prSetupCC {|method, key, cc|
+	prSetupCC {|key, method, cc|
 		var res, lastRes;
 		var cv= CV();
 		cvs.put(key, cv);
