@@ -42,6 +42,24 @@ GreenTest {
 		};
 	}
 
+	*speaker3 {|channels= #[0, 1], amp= 0.5, dur= 1|
+		Routine.run{
+			Server.default.bootSync;
+			SynthDef(\greenTestImpulse, {|out= 0, amp= 1|
+				var e= Line.ar(1, 0, 0.01, doneAction:2);
+				var z= Impulse.ar(amp);
+				OffsetOut.ar(out, z);
+			}).add;
+			Server.default.sync;
+			player= Pbind(
+				\instrument, \greenTestImpulse,
+				\dur, dur,
+				\out, Pseq(channels, inf),
+				\amp, amp
+			).play;
+		};
+	}
+
 	*stop {
 		player.stop;
 	}

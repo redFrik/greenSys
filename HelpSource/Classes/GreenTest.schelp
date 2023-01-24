@@ -6,7 +6,7 @@ RELATED:: Classes/RedTest
 
 CLASSMETHODS::
 
-METHOD:: speaker, speaker2
+METHOD:: speaker, speaker2, speaker3
 Start speaker test.
 
 ARGUMENT:: channels
@@ -33,4 +33,8 @@ GreenTest.stop;
 
 a= GreenTest.speaker2([0, 1, 2, 4]);  //ping in 4ch
 a.stop;
+
+GreenTest.speaker3([[0, 2], [1, 3]]);  //impulses in 4ch
+//alternating frontLeft+backLeft, frontRight+backRight
+GreenTest.stop;
 ::
