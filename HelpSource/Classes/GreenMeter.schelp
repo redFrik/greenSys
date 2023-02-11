@@ -50,7 +50,9 @@ a.free;
 g.close;
 
 
+//Warning! - might be loud
 a= {WhiteNoise.ar(SinOsc.kr(0.5, (1..4)).max*MouseX.kr(0, 1.25))}.play;
+//move mouse to the right to make output signal clip
 g= GreenMeter(numChannels: 4);
 g.resetPeaks;  //or [shift] click on the buttons
 g.dBLow= -40;

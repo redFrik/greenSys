@@ -1,11 +1,11 @@
 CLASS:: AbstractGreenMIDIController
 SUMMARY:: abstract class for MIDI controllers
 CATEGORIES:: Green>MIDI
-RELATED:: Classes/MIDIIn, Overviews/greenSysOverview
+RELATED:: Classes/MIDIIn, Classes/CV, Overviews/greenSysOverview
 
 DESCRIPTION::
 
-Requires the GUICV quark installed.
+Requires the GUICV quark.
 
 NOTE::
 This is an abstract class. Do not instantiate - use the subclasses.

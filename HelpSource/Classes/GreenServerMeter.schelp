@@ -45,7 +45,7 @@ EXAMPLES::
 CODE::
 s.boot;
 g= GreenServerMeter();
-g.resetPeaks;
+g.resetPeaks;  //arm indicators again if signal clipped
 
 a= {WhiteNoise.ar(SinOsc.kr(0.5, (1..4)).max*0.1)}.play;
 

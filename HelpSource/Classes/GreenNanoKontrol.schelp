@@ -20,6 +20,9 @@ INSTANCEMETHODS::
 
 PRIVATE:: prSetup
 
+METHOD:: ctrl, knobs, sliders, buttons1, buttons2
+Group of LINK::Classes/CV:: instances as an LINK::Classes/Array::.
+
 
 EXAMPLES::
 
@@ -35,14 +38,14 @@ g.cvs[\slider1].value;  //same thing
 
 g.slider1.value= 0.5;  //seldom needed but value can also be set
 
-g.slider1.addAction({|cv, val| val.postln});  //note: using softSet so might need to wiggle
+g.slider1.action_({|cv, val| val.postln});  //note: using softSet so might need to wiggle
 
 f= {|cv, val| (val*1000).postln};
 g.slider1.addAction(f);  //several actions can be added
 g.slider1.removeAction(f);  //and removed
 
 g.button1_1.value;  //top button next to slider1
-g.button1_1.addAction({|cv, val| ("button1_1 changed value to"+val).postln});
+g.button1_1.action_({|cv, val| ("button1_1 changed value to"+val).postln});
 g.button1_1.value_(1);  //set also triggers the action
 g.button1_1.value_(0);
 
