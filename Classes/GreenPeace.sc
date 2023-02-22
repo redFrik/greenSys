@@ -7,11 +7,13 @@ GreenPeace {
 	classvar responder, synths, makeSynths, server, abus, num;
 
 	*initClass {
-		SynthDef(\greenPeace, {|bus= 0, dur= 0.1|
-			var src= In.ar(bus, 1);
-			var clip= 1-InRange.ar(src, -1, 1);
-			SendReply.ar(Trig1.ar(clip, dur), '/greenPeace', [bus, src]);
-		}, #[\ir, \ir]).add;
+		StartUp.add({
+			SynthDef(\greenPeace, {|bus= 0, dur= 0.1|
+				var src= In.ar(bus, 1);
+				var clip= 1-InRange.ar(src, -1, 1);
+				SendReply.ar(Trig1.ar(clip, dur), '/greenPeace', [bus, src]);
+			}, #[\ir, \ir]).add;
+		});
 	}
 
 	*activate {|bus= 0, numChannels= 2, dur= 0.1, target, action|
