@@ -1,7 +1,7 @@
 CLASS:: GreenTest
 SUMMARY:: Generate test signals
 CATEGORIES:: Green>Tools
-RELATED:: Classes/RedTest
+RELATED:: Classes/RedTest, Classes/CheckBadValues
 
 
 CLASSMETHODS::
@@ -22,6 +22,18 @@ METHOD:: stop
 Stop all sounds started by link::#*speaker::, link::#*speaker2:: etc.
 
 
+SUBSECTION:: Debug
+
+These methods for debugging only.
+
+NOTE::
+Loud!
+::
+
+METHOD:: denormals, infinity, notANumber
+
+
+
 INSTANCEMETHODS::
 
 
@@ -36,5 +48,21 @@ a.stop;
 
 GreenTest.speaker3([[0, 2], [1, 3]]);  //impulses in 4ch
 //alternating frontLeft+backLeft, frontRight+backRight
+GreenTest.stop;
+::
+
+SUBSECTION:: Debug (Warning)
+
+These methods for debugging only. Loud!
+Use LINK::Classes/CheckBadValues::, LINK::Classes/Sanitize:: or LINK::Classes/ReplaceBadValues:: to catch these.
+
+CODE::
+GreenTest.denormals([4, 5]);  //send out of control signal to ch4 and 5
+GreenTest.stop;
+
+GreenTest.infinity([4, 5]);  //inf on ch4 and 5
+GreenTest.stop;
+
+GreenTest.notANumber([4, 5]);  //NaN on ch4 and 5
 GreenTest.stop;
 ::
