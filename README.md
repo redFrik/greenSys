@@ -8,7 +8,7 @@ Work in progress.
 
 [SuperCollider](https://supercollider.github.io) version 3.9 or newer running under macOS, Linux or Windows.
 
-## Dependancies
+## Dependencies
 
 * **GUICV** - quark https://github.com/redFrik/GUICV
 
