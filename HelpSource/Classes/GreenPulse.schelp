@@ -1,0 +1,27 @@
+CLASS:: GreenPulse
+SUMMARY:: Pulsetrain
+CATEGORIES:: Green>UGens
+RELATED:: Classes/Blip
+
+
+DESCRIPTION::
+Ported from Pd patch found here: http://msp.ucsd.edu/syllabi/170.21f/index.htm
+
+
+CLASSMETHODS::
+
+METHOD:: ar, kr
+
+ARGUMENT:: freq
+
+ARGUMENT:: bw
+
+ARGUMENT:: hp
+
+
+EXAMPLES::
+
+CODE::
+s.boot;
+{GreenPulse.ar(MouseX.kr(1, 2000, 1), MouseY.kr(1, 2000, 1))!2*0.2}.scope;
+::

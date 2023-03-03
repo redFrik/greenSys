@@ -1,0 +1,42 @@
+CLASS:: GreenRandDur
+SUMMARY:: Random values with relative durations
+CATEGORIES:: Green>UGens
+RELATED:: Classes/Rand
+
+
+DESCRIPTION::
+The higher the random value, the longer until next.
+
+Basically it is doing this...
+CODE::
+r= Routine.run({inf.do{1.0.rand.postln.wait}});
+r.stop;
+::
+
+
+CLASSMETHODS::
+
+METHOD:: ar, kr
+
+ARGUMENT:: lo
+
+ARGUMENT:: hi
+
+
+EXAMPLES::
+
+CODE::
+s.boot;
+{GreenRandDur.ar().poll; DC.ar(0)}.play;
+
+//lower pitches are shorter
+{SinOsc.ar(GreenRandDur.ar().linexp(0, 1, 500, 5000))*0.1!2}.play;
+
+//used as audio noise
+(
+{
+	var freq= MouseX.kr(20, 20000, 1).poll;
+	GreenRandDur.ar(-1/freq, 1/freq)*freq*0.1!2;
+}.play;
+)
+::
