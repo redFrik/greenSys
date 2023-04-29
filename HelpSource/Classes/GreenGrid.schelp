@@ -1,0 +1,173 @@
+CLASS:: GreenGrid
+SUMMARY:: a grid widget
+CATEGORIES:: Green>Widgets
+RELATED:: Classes/UserView
+
+DESCRIPTION::
+Requires the GUICV quark.
+
+
+CLASSMETHODS::
+
+METHOD:: new
+
+ARGUMENT:: parent
+
+ARGUMENT:: bounds
+
+ARGUMENT:: cols
+Number of columns.
+
+ARGUMENT:: rows
+Number of rows.
+
+ARGUMENT:: action
+A LINK::Classes/Function:: that will be evaluated when a cell is clicked with the mouse. The values passed in to the function are CODE::row, col, value::
+
+CODE::
+GreenGrid(action: {|col, row, val| [col, row, val].postln});
+::
+
+
+INSTANCEMETHODS::
+
+PRIVATE:: initGreenGrid, prCheckAndSet
+
+METHOD:: action
+Get or set the action function. See LINK::#*new:: above.
+
+METHOD:: array
+An LINK::Classes/Array:: of LINK::Classes/Int8Array::s.
+
+DISCUSSION::
+There is one LINK::Classes/Int8Array:: representing the column for each row.
+
+For example, a grid with four columns and two rows will give an array with the following structure...
+CODE::
+GreenGrid(cols: 4, rows: 2).array;
+-> [ Int8Array[ 0, 0, 0, 0 ], Int8Array[ 0, 0, 0, 0 ] ]
+::
+
+And to fill the grid with random values...
+CODE::
+g= GreenGrid();
+g.array= {Int8Array.newFrom({2.rand}!g.cols)}!g.rows;
+
+//or the shortcut:
+g.fill({2.rand});
+::
+
+METHOD:: cols
+Get or set the number of columns (minimum 1).
+
+METHOD:: rows
+Get or set the number of rows (minimum 1).
+
+METHOD:: at
+Return the value at a column and row.
+
+METHOD:: colAt
+Return all the values in a column.
+
+RETURNS:: an LINK::Classes/Array::
+
+METHOD:: rowAt
+Return all the values in a row.
+
+RETURNS:: an LINK::Classes/Int8Array::
+
+METHOD:: setCol
+Set all the values in a column.
+
+METHOD:: setRow
+Set all the values in a row.
+
+METHOD:: setAt
+Set a value (=1) at a column and row.
+
+METHOD:: clearAt
+Clear a value (=0) at a column and row.
+
+METHOD:: clear
+Set all values to 0.
+
+METHOD:: fill
+Populate the grid from a custom function.
+
+ARGUMENT:: func
+A LINK::Classes/Function:: that will be evaluated for each cell. Col and row are passed in as integers.
+
+
+SUBSECTION:: Look&Feel
+
+METHOD:: clickArea
+Setter. For mouse clicking. A LINK::Classes/Float:: from 0.0 to 1.0 where 1.0 is the most sensitive.
+
+METHOD:: dragArea
+Setter. For mouse dragging. A LINK::Classes/Float:: from 0.0 to 1.0 where 1.0 is the most sensitive.
+
+METHOD:: gridWidth
+The width of the lines. Set to 0 to hide them.
+
+METHOD:: drawMethod
+A LINK::Classes/Symbol:: that can be either CODE::\addRect:: or CODE::\addOval::.
+
+
+EXAMPLES::
+
+CODE::
+g= GreenGrid(cols: 6, rows: 5);
+g.action= {|col, row, val| [col, row, val].postln};
+//click and drag
+g.fill({|x, y| x+y%2});
+g.array.do{|x| x.postln}
+g.clear;
+g.close;
+
+
+//osc example
+(
+n= NetAddr("127.0.0.1", 57120);
+OSCFunc.trace(true, true);
+g= GreenGrid(cols: 8, rows: 8);
+g.action= {|col, row, val| n.sendMsg(\grid, col, row, val)};
+)
+
+g.bounds= Rect(100, 100, 500, 500);  //resize the window
+
+(
+g.close;
+OSCFunc.trace(false);
+)
+
+
+//embed
+(
+var win= Window();
+win.layout_(VLayout(
+	Button().states_([["clear"]]).action_({g.clear}),
+	g= GreenGrid(cols: 50, rows: 50).fill{2.linrand}.dragArea_(1)
+));
+win.front;
+CmdPeriod.doOnce({win.close});
+)
+
+g.cols= 8;
+g.rows= 32;
+
+//animation
+(
+Routine({
+	150.do{|i|
+		g.fill({|x, y|
+			(i+y%g.rows+y<x).binaryValue
+		});
+		(1/60).wait;
+	};
+}).play(AppClock);
+)
+
+g.gridWidth_(4);
+g.drawMethod_(\addOval)
+g.parent.close;
+::
