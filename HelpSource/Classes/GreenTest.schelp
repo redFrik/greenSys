@@ -19,7 +19,7 @@ ARGUMENT:: dur
 Change duration between notes in seconds.
 
 METHOD:: stop
-Stop all sounds started by link::#*speaker::, link::#*speaker2:: etc.
+Stop all sounds started by LINK::#*speaker::, LINK::#*speaker2:: etc.
 
 
 SUBSECTION:: Debug
@@ -40,7 +40,7 @@ INSTANCEMETHODS::
 EXAMPLES::
 
 CODE::
-GreenTest.speaker();  //pink noise in stereo
+GreenTest.speaker();  //pink noise alternating in two channels
 GreenTest.stop;
 
 a= GreenTest.speaker2([0, 1, 2, 4]);  //ping in 4ch

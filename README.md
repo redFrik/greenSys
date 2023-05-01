@@ -10,7 +10,8 @@ Work in progress.
 
 ## Dependencies
 
-* **GUICV** - quark https://github.com/redFrik/GUICV
+* **GUICV** - quark https://github.com/redFrik/GUICV  
+Automatically installed when running the `Quarks.install` here below.
 
 ## Installation
 

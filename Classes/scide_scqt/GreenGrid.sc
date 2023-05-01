@@ -205,30 +205,3 @@ GreenGrid : SCViewHolder {
 		})
 	}
 }
-
-/*
-g= GreenGrid();
-g.array= {Int8Array.newFrom({2.rand}!g.cols)}!g.rows;
-g.action= {|x,y,v| [x,y,v].postln}
-g.at(1,2)
-g.setAt(1,2)
-g.setRow(2, Int8Array[0,0,1,0,0,1,0,0,1,0])
-g.setCol(0, [1, 1, 1])
-g.setRow(3, [0, \tt,1])
-g.array[2]
-g.rowAt(1)
-g.colAt(1)
-g.clear
-g.at(9,10)
-g.cols=7
-g.cols
-g.rows= 1
-g.gridWidth= 2
-g.drawMethod= \addOval
-g.clear
-g.array.size
-g.at(1,0)
-g.rowAt(1)
-g.colAt(9)
-g.array.collect{|x| x[2]}
-*/

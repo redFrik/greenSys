@@ -34,6 +34,7 @@ TABLE::
 ::
 
 SECTION:: Tools
+
 TABLE::
 ## LINK::Classes/GreenNodeTree:: || Node tree monitor (GUI)
 ## LINK::Classes/GreenTest:: || Generate test signals
@@ -41,6 +42,15 @@ TABLE::
 ::
 
 SECTION:: UGens
+
 TABLE::
 ## LINK::Classes/GreenNoise:: || Filtered white noise
+## LINK::Classes/GreenPulse:: || Pulsetrain
+## LINK::Classes/GreenRandDur:: || Random values with relative durations
+::
+
+SECTION:: Widgets
+
+TABLE::
+## LINK::Classes/GreenGrid:: || 2D grid
 ::
