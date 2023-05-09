@@ -36,6 +36,7 @@ TABLE::
 SECTION:: Tools
 
 TABLE::
+## LINK::Classes/GreenClass:: || Various introspection tools
 ## LINK::Classes/GreenNodeTree:: || Node tree monitor (GUI)
 ## LINK::Classes/GreenTest:: || Generate test signals
 ## LINK::Classes/GreenTimer:: || Timer

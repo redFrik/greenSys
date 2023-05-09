@@ -1,0 +1,84 @@
+CLASS:: GreenClass
+SUMMARY:: Various introspection tools
+CATEGORIES:: Green>Tools
+RELATED:: Classes/Method
+
+
+DESCRIPTION::
+Various tools for checking and testing classes. Can help finding problems in class code.
+
+
+CLASSMETHODS::
+
+PRIVATE:: prCheckUnusedArguments, prCheckUnusedVariables
+
+
+METHOD:: code
+The source code for a class or a certain method.
+
+CODE::
+GreenClass.code(SinOsc)
+GreenClass.code(UserView.methods[3])
+::
+
+ARGUMENT:: classOrMethod
+Either a LINK::Classes/Class:: or a LINK::Classes/Method:: instance.
+
+RETURNS::
+A string.
+
+
+METHOD:: method
+Convenience method. Get the LINK::Classes/Method:: instance from a symbol.
+
+CODE::
+GreenClass.method(Server, \boot).dump
+::
+
+ARGUMENT:: class
+A LINK::Classes/Class::.
+
+ARGUMENT:: symbol
+Name of method.
+
+RETURNS::
+The LINK::Classes/Method:: instance or nil if not found.
+
+
+SUBSECTION:: Post only
+
+
+METHOD:: checkUnusedArguments
+
+ARGUMENT:: classOrMethod
+Either a LINK::Classes/Class:: or a LINK::Classes/Method:: instance.
+
+CODE::
+GreenClass.checkUnusedArguments(Server)
+GreenClass.checkUnusedArguments(GreenClass.method(Server, \setSharedControl))
+GreenClass.checkUnusedArguments(UserView.methods[3])
+::
+
+
+METHOD:: checkUnusedVariables
+Only top level variables - not for functions inside of methods.
+
+ARGUMENT:: classOrMethod
+Either a LINK::Classes/Class:: or a LINK::Classes/Method:: instance.
+
+CODE::
+GreenClass.checkUnusedVariables(Server)
+GreenClass.checkUnusedVariables(GreenClass.method(Server, \makeGui))
+GreenClass.checkUnusedVariables(UserView.methods[3])
+::
+
+
+EXAMPLES::
+
+CODE::
+//go through all classes and check for potentially unused arguments
+Object.allSubclasses.do{|c| GreenClass.checkUnusedArguments(c)}
+
+//go through all classes and check for potentially unused variables
+Object.allSubclasses.do{|c| GreenClass.checkUnusedVariables(c)}
+::
