@@ -1,0 +1,71 @@
+CLASS:: GreenSoundFile
+SUMMARY:: Convenience class
+CATEGORIES:: Green>Tools
+RELATED:: Classes/GreenBuffer, Classes/SoundFile
+
+
+DESCRIPTION::
+Convenient class methods for quickly finding LINK::Classes/SoundFile:: instances.
+
+NOTE::
+It is recommended to set a default folder to search. Edit this and put in startup.scd...
+CODE::
+GreenSoundFile.defaultFolderPath= "~/Documents/soundfiles".standardizePath;
+::
+If not set CODE::Platform.resourceDir+/+"sounds":: will be used.
+::
+
+
+CLASSMETHODS::
+
+
+METHOD:: new, next, prev, random, all
+Just pick and return a LINK::Classes/SoundFile::. If possible ignore previously loaded file (stored in LINK::#*lastSoundFile::) and ignore sound files that does not match the number of channels.
+
+CODE::
+GreenSoundFile().path;  //quick
+::
+
+ARGUMENT:: path
+Folder to search. If CODE::nil:: then LINK::#*defaultFolderPath:: will be used.
+
+ARGUMENT:: channels
+A specific number of channels. Can be an LINK::Classes/Array:: of numbers.
+
+ARGUMENT:: minDur
+Minimum duration in seconds.
+
+ARGUMENT:: maxDur
+Maximum duration in seconds.
+
+ARGUMENT:: recursive
+Include subfolders or not.
+
+ARGUMENT:: exclude
+An LINK::Classes/Array:: of strings with filenames to ignore. Wildcards (*) are supported.
+
+RETURNS::
+A LINK::Classes/SoundFile:: or an LINK::Classes/Array:: of LINK::Classes/SoundFile::s (.all only).
+
+
+METHOD:: defaultFolderPath
+Get or set where to search by default. Can always be overriden with the CODE::path:: argument.
+
+
+METHOD:: lastSoundFile
+Get or set last used LINK::Classes/SoundFile::.
+
+
+EXAMPLES::
+
+CODE::
+GreenSoundFile.random.path
+GreenSoundFile.lastSoundFile.path
+GreenSoundFile.next.path
+GreenSoundFile.prev.path
+
+GreenSoundFile.all  //an array of matching soundfiles
+
+//hypothetical example - pick a random stereo sound file (not last) that's betweet 3.3 and 10 seconds long. Search in all subfolders but exclude files starting with "kick" or "hihat"
+GreenSoundFile.random("~/some/folder/", 2, 3.3, 10, true, ["kick*", "hihat*"]);
+::

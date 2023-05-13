@@ -36,8 +36,11 @@ TABLE::
 SECTION:: Tools
 
 TABLE::
+## LINK::Classes/GreenBuffer:: || Convenience class
 ## LINK::Classes/GreenClass:: || Various introspection tools
 ## LINK::Classes/GreenNodeTree:: || Node tree monitor (GUI)
+## LINK::Classes/GreenSoundFile:: || Convenience class
+## LINK::Classes/GreenString:: || String manipulations
 ## LINK::Classes/GreenTest:: || Generate test signals
 ## LINK::Classes/GreenTimer:: || Timer
 ::
