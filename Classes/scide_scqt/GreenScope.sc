@@ -1,6 +1,7 @@
 GreenScope : SCViewHolder {
 
-	var scopeView, bus, synth;
+	var scopeView, bus, synth, <isPlaying;
+	var userView;
 
 	*new {|parent, bounds, server, index= 0|
 		^super.new.initGreenScope(parent, bounds, server, index)
@@ -9,7 +10,6 @@ GreenScope : SCViewHolder {
 	initGreenScope {|parent, bounds, server, index|
 
 		var skin= GUI.skins.guiCV;
-		var userView;
 
 		server= server ? Server.default;
 		bus= Bus(\audio, index, 2, server);
@@ -26,15 +26,18 @@ GreenScope : SCViewHolder {
 		.drawFunc_({|usr|
 			var w= usr.bounds.width*0.5;
 			var h= usr.bounds.height*0.5;
-			var d= w.min(h);
+			var d= w.min(h)*scopeView.yZoom;
+			var d1= d*0.5.sqrt;
+			var d2= d*2.sqrt;
+			var d3= d*0.1;
 			Pen.translate(w, h);
 			Pen.strokeColor= skin.foreground;
-			Pen.addOval(Rect.aboutPoint(Point(0, 0), d*0.5, d*0.5));
-			Pen.addOval(Rect.aboutPoint(Point(0, 0), d, d));
-			Pen.moveTo(Point(0-d*0.1, 0));
-			Pen.lineTo(Point(d*0.1, 0));
-			Pen.moveTo(Point(0, 0-d*0.1));
-			Pen.lineTo(Point(0, d*0.1));
+			Pen.addOval(Rect.aboutPoint(Point(0, 0), d1, d1));
+			Pen.addOval(Rect.aboutPoint(Point(0, 0), d2, d2));
+			Pen.moveTo(Point(0-d3, 0));
+			Pen.lineTo(Point(d3, 0));
+			Pen.moveTo(Point(0, 0-d3));
+			Pen.lineTo(Point(0, d3));
 			Pen.stroke;
 		});
 
@@ -58,10 +61,37 @@ GreenScope : SCViewHolder {
 
 		scopeView.onClose_({
 			scopeView.stop;
+			isPlaying= false;
 			synth.free;
 			bus.free;
 			ServerQuit.remove(this, server);
 			ServerTree.remove(this, server);
+		});
+
+		view.keyDownAction_({|view, chr|
+			switch(chr,
+				Char.space, {
+					if(isPlaying, {
+						scopeView.stop;
+						isPlaying= false;
+					}, {
+						scopeView.start;
+						isPlaying= true;
+					})
+				},
+				$+, {
+					scopeView.yZoom_(scopeView.yZoom+0.1);
+					userView.refresh;
+				},
+				$-, {
+					scopeView.yZoom_((scopeView.yZoom-0.1).max(0));
+					userView.refresh;
+				},
+				$=, {
+					scopeView.yZoom_(0.5.sqrt);
+					userView.refresh;
+				},
+			)
 		});
 	}
 
@@ -71,9 +101,31 @@ GreenScope : SCViewHolder {
 		scopeView
 		.bufnum_(synth.bufferIndex)
 		.start;
+		isPlaying= true;
 	}
 
 	doOnServerQuit {|server|
 		scopeView.stop;
+		isPlaying= false;
 	}
+
+	start {
+		if(isPlaying.not, {
+			scopeView.start;
+			isPlaying= true;
+		})
+	}
+
+	stop {
+		if(isPlaying, {
+			scopeView.stop;
+			isPlaying= false;
+		})
+	}
+
+	zoom_ {|factor= 0.707|
+		scopeView.yZoom= factor.max(0);
+		userView.refresh;
+	}
+	zoom {^scopeView.yZoom}
 }

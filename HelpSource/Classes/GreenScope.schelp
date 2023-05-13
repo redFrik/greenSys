@@ -6,6 +6,13 @@ RELATED:: Classes/Stethoscope, Classes/GreenServerMeter
 DESCRIPTION::
 Requires the GUICV quark.
 
+Keyboard functions:
+TABLE::
+## CODE::space:: || freeze on/off
+## CODE::+:: || zoom in
+## CODE::-:: || zoom out
+## CODE::=:: || zoom reset
+::
 
 CLASSMETHODS::
 
@@ -26,6 +33,21 @@ INSTANCEMETHODS::
 
 PRIVATE:: initGreenScope
 
+METHOD:: isPlaying
+A LINK::Classes/Boolean::. Start and stop with the 'space' key or with the LINK::#-start:: and LINK::#-stop:: methods.
+
+METHOD:: start
+Start if not running.
+
+METHOD:: stop
+Stop if running.
+
+METHOD:: zoom
+Get or set the zoom factor. Can also zoom with the +/- and = keys.
+
+ARGUMENT:: factor
+A LINK::Classes/Float::.
+
 
 EXAMPLES::
 
@@ -33,10 +55,11 @@ CODE::
 s.boot;
 a= {SinOsc.ar([500, 501], 0, 0.5)}.play;
 g= GreenScope();
-g.moveTo(500, 500);
+
+g.bounds_(Rect(30, 50, 400, 600));  //move and resize
+g.zoom= 1.75;  //zoom in
+g.close;
 
 //embed
 Window().layout_(VLayout(GreenScope())).front;
-
-g.close;
 ::
