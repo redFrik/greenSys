@@ -9,7 +9,7 @@ Convenient class methods for quickly loading buffers.
 
 It is possible to set a default folder to search. But only needed this should be different than  LINK::Classes/GreenSoundFile#*defaultFolderPath::.
 CODE::
-GreenBuffer.defaultFolderPath= "~/Documents/soundfiles".standardizePath;
+try{\GreenBuffer.asClass.defaultFolderPath= "~/Documents/soundfiles".standardizePath};
 ::
 
 

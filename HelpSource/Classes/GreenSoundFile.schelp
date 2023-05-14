@@ -10,7 +10,7 @@ Convenient class methods for quickly finding LINK::Classes/SoundFile:: instances
 NOTE::
 It is recommended to set a default folder to search. Edit this and put in startup.scd...
 CODE::
-GreenSoundFile.defaultFolderPath= "~/Documents/soundfiles".standardizePath;
+try{\GreenSoundFile.asClass.defaultFolderPath= "~/Documents/soundfiles".standardizePath};
 ::
 If not set CODE::Platform.resourceDir+/+"sounds":: will be used.
 ::

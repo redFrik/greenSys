@@ -4,7 +4,7 @@ CATEGORIES:: Green>Widgets
 RELATED:: Classes/UserView
 
 DESCRIPTION::
-Requires the GUICV quark.
+Can be used without greenSys and GUICV quarks.
 
 
 CLASSMETHODS::

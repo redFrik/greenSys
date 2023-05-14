@@ -40,6 +40,18 @@ GreenClass {
 		}
 	}
 
+	*checkUnusedVariables {|classOrMethod|
+		if(classOrMethod.isKindOf(Class), {
+			classOrMethod.methods
+		}, {
+			[classOrMethod]
+		}).do{|m|
+			this.prCheckUnusedVariables(m)
+		}
+	}
+
+	//--private
+
 	*prCheckUnusedArguments {|method|
 		var code;
 		if(method.argNames.notNil and:{method.primitiveName.isNil}, {
@@ -53,16 +65,6 @@ GreenClass {
 				}
 			})
 		})
-	}
-
-	*checkUnusedVariables {|classOrMethod|
-		if(classOrMethod.isKindOf(Class), {
-			classOrMethod.methods
-		}, {
-			[classOrMethod]
-		}).do{|m|
-			this.prCheckUnusedVariables(m)
-		}
 	}
 
 	*prCheckUnusedVariables {|method|
