@@ -12,12 +12,12 @@ CLASSMETHODS::
 
 
 METHOD:: match
-Check if CODE::str:: matches any of the tests in CODE::array::. Support wildcards (*).
+Check if CODE::str:: matches CODE::test::. Support wildcards (*).
 
 CODE::
-GreenString.match("test123", ["tes*"])  //true
-GreenString.match("test123", ["tesd"])  //false
-GreenString.match("test123", ["t*t*"])  //true
+GreenString.match("test123", "tes*")  //true
+GreenString.match("test123", "tesd")  //false
+GreenString.match("test123", "t*t*")  //true
 
 GreenString.match("test123", ["test", "123"])  //false (none match)
 GreenString.match("test123", ["test", "test123"])  //true (second one match)
@@ -27,8 +27,8 @@ GreenString.match("test123", ["test1*3", "test123"])  //true (both matches)
 ARGUMENT:: str
 The string to be matched.
 
-ARGUMENT:: array
-An LINK::Classes/Array:: of strings to match.
+ARGUMENT:: test
+A LINK::Classes/String:: or an LINK::Classes/Array:: of strings to match.
 
 RETURNS::
 A LINK::Classes/Boolean::.
