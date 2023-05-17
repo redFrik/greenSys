@@ -1,0 +1,39 @@
+CLASS:: GreenTrain
+SUMMARY:: Impulse train with curvature
+CATEGORIES:: Green>UGens
+RELATED:: Classes/GreenPulse
+
+
+DESCRIPTION::
+
+
+CLASSMETHODS::
+
+METHOD:: ar, kr
+
+ARGUMENT:: trig
+Trigger.
+
+ARGUMENT:: dur
+Total duration in seconds
+
+ARGUMENT:: cur
+Curvature or 'shape'. 0 = pulses at regular intervals.
+
+ARGUMENT:: num
+Number of impulses per duration.
+
+ARGUMENT:: amp
+Amplitude.
+
+
+EXAMPLES::
+
+CODE::
+s.boot;
+a= {|cur= 0, num= 18| GreenTrain.ar(Impulse.ar(0.5), 1, cur, num)!2}.play
+a.set(\cur, 3);
+a.set(\cur, -2);
+a.set(\num, 100);
+a.free;
+::

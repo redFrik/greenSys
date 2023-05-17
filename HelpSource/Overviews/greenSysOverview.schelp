@@ -51,6 +51,7 @@ TABLE::
 ## LINK::Classes/GreenNoise:: || Filtered white noise
 ## LINK::Classes/GreenPulse:: || Pulsetrain
 ## LINK::Classes/GreenRandDur:: || Random values with relative durations
+## LINK::Classes/GreenTrain:: || Impulse train with curvature
 ::
 
 SECTION:: Widgets
