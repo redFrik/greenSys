@@ -2,10 +2,9 @@
 
 GreenBuffer {
 
-	classvar <>defaultFolderPath;  //if nil uses GreenSoundFile.defaultFolderPath
+	classvar <>defaultFolderPath;  //preferably set in startup.scd
 
 	*new {|server, numChannels= 1, path, recursive= false, exclude= #[]|
-		path= path?defaultFolderPath;
 		^this.prBufferFromGreenSoundFile(\new, server, path, numChannels, recursive, exclude)
 	}
 
@@ -51,7 +50,9 @@ GreenBuffer {
 	//--private
 
 	*prBufferFromGreenSoundFile {|method, server, path, channels, recursive, exclude|
-		var file= GreenSoundFile.perform(method, path, channels, nil, nil, recursive, exclude);
+		var file;
+		path= path??{this.defaultFolderPath??{Platform.resourceDir+/+"sounds"}};
+		file= GreenSoundFile.perform(method, path, channels, nil, nil, recursive, exclude);
 		if(file.isNil, {^nil});
 		^Buffer.read(server??{Server.default}, file.path)
 	}

@@ -59,6 +59,8 @@ Get or set last used LINK::Classes/SoundFile::.
 EXAMPLES::
 
 CODE::
+GreenSoundFile.defaultFolderPath  //where to look
+
 GreenSoundFile.random.path
 GreenSoundFile.lastSoundFile.path
 GreenSoundFile.next.path

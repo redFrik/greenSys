@@ -7,9 +7,12 @@ RELATED:: Classes/GreenSoundFile, Classes/Buffer
 DESCRIPTION::
 Convenient class methods for quickly loading buffers.
 
-It is possible to set a default folder to search. But only needed this should be different than  LINK::Classes/GreenSoundFile#*defaultFolderPath::.
+NOTE::
+It is recommended to set a default folder to search. Edit this and put in startup.scd...
 CODE::
 try{\GreenBuffer.asClass.defaultFolderPath= "~/Documents/soundfiles".standardizePath};
+::
+If not set CODE::Platform.resourceDir+/+"sounds":: will be used.
 ::
 
 
@@ -46,7 +49,7 @@ A LINK::Classes/Buffer::.
 
 
 METHOD:: randomReplace
-Find a random LINK::Classes/Buffer:: (not last) with the same number of channels.
+Find a random LINK::Classes/Buffer:: (not last) with the same number of channels. Will not free the buffer passed in as first argument.
 
 CODE::
 b= GreenBuffer.random;
@@ -90,12 +93,14 @@ A LINK::Classes/Buffer::.
 
 
 METHOD:: defaultFolderPath
-Get or set where to search by default. Can always be overriden with the CODE::path:: argument. If CODE::nil:: then CODE::GreenSoundFile.defaultFolderPath:: will be used.
+Get or set where to search by default. Can always be overriden with the CODE::path:: argument.
 
 
 EXAMPLES::
 
 CODE::
+GreenBuffer.defaultFolderPath  //where to look
+
 s.boot;
 b= GreenBuffer.random;
 b.plot;
