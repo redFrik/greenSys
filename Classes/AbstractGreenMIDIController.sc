@@ -57,16 +57,11 @@ AbstractGreenMIDIController {
 			responders.add(
 				MIDIFunc.cc({|val, num|
 					{
-						res= cv.perform(method, val/127, within);
+						res= cv.perform(method, val/127, within);  //set or softSet
 
-						if(res==true and:{lastRes!=res}, {
+						if(res.isNumber.not and:{lastRes!=res}, {
 							lastRes= res;
-							withinAction.value(key, cv, true);
-						}, {
-							if(res==false and:{lastRes!=res}, {
-								lastRes= res;
-								withinAction.value(key, cv, false);
-							});
+							withinAction.value(key, cv, res);
 						});
 
 						if(debug, {
