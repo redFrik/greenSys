@@ -44,10 +44,12 @@ f= {|cv, val| (val*1000).postln};
 g.slider1.addAction(f);  //several actions can be added
 g.slider1.removeAction(f);  //and removed
 
-g.button1_S.value;  //top button next to slider1
-g.button1_S.action_({|cv, val| ("button1_S changed value to"+val).postln});
-g.button1_S.value_(1);  //set also triggers the action
-g.button1_S.value_(0);
+g.buttonS1.value;  //top row, first column button - next to slider1
+g.buttonS1.action_({|cv, val| ("buttonS1 changed value to"+val).postln});
+g.buttonS1.value_(1);  //set also triggers the action
+g.buttonS1.value_(0);
+g.buttonM2.value;  //middle row, second column button - next to slider2
+g.buttonR3.value;  //bottom row, third column button - next to slider3
 
 g.gui;  //optional GUI
 

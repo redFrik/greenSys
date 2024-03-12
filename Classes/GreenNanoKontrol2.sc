@@ -33,13 +33,13 @@ GreenNanoKontrol2 : AbstractGreenMIDIController {
 			this.prSetupCC(("slider"++(i+1)).asSymbol, \softSet, cc);
 		};
 		buttonsS= #[32, 33, 34, 35, 36, 37, 38, 39].collect{|cc, i|  //top
-			this.prSetupCC(("button"++(i+1)++"_S").asSymbol, \set, cc);
+			this.prSetupCC(("buttonS"++(i+1)).asSymbol, \set, cc);
 		};
 		buttonsM= #[48, 49, 50, 51, 52, 53, 54, 55].collect{|cc, i|  //middle
-			this.prSetupCC(("button"++(i+1)++"_M").asSymbol, \set, cc);
+			this.prSetupCC(("buttonM"++(i+1)).asSymbol, \set, cc);
 		};
 		buttonsR= #[64, 65, 66, 67, 68, 69, 70, 71].collect{|cc, i|  //bottom
-			this.prSetupCC(("button"++(i+1)++"_R").asSymbol, \set, cc);
+			this.prSetupCC(("buttonR"++(i+1)).asSymbol, \set, cc);
 		};
 	}
 }

@@ -6,7 +6,7 @@ GreenNanoKontrol : AbstractGreenMIDIController {
 
 	const <ctrlSymbols= #[\rew, \play, \ff, \loop, \stop, \rec];
 
-	var <ctrl, <knobs, <sliders, <buttons1, <buttons2;
+	var <ctrl, <knobs, <sliders, <buttonsH, <buttonsL;
 
 	*deviceName {^"nanoKONTROL"}
 
@@ -15,6 +15,15 @@ GreenNanoKontrol : AbstractGreenMIDIController {
 
 	gui {|position|
 		^GreenNanoKontrolGUI(nanoKontrol:this).moveTo(*position.asRect.asArray.drop(2))
+	}
+
+	buttons1 {
+		this.deprecated(thisMethod, this.class.findMethod(\buttonsH));
+		^buttonsH
+	}
+	buttons2 {
+		this.deprecated(thisMethod, this.class.findMethod(\buttonsL));
+		^buttonsL
 	}
 
 	//--private
@@ -29,11 +38,11 @@ GreenNanoKontrol : AbstractGreenMIDIController {
 		sliders= #[2, 3, 4, 5, 6, 8, 9, 12, 13].collect{|cc, i|
 			this.prSetupCC(("slider"++(i+1)).asSymbol, \softSet, cc);
 		};
-		buttons1= #[23, 24, 25, 26, 27, 28, 29, 30, 31].collect{|cc, i|  //top row
-			this.prSetupCC(("button"++(i+1)++"_1").asSymbol, \set, cc);
+		buttonsH= #[23, 24, 25, 26, 27, 28, 29, 30, 31].collect{|cc, i|  //top row
+			this.prSetupCC(("buttonH"++(i+1)).asSymbol, \set, cc);
 		};
-		buttons2= #[33, 34, 35, 36, 37, 38, 39, 40, 41].collect{|cc, i|  //bottom row
-			this.prSetupCC(("button"++(i+1)++"_2").asSymbol, \set, cc);
+		buttonsL= #[33, 34, 35, 36, 37, 38, 39, 40, 41].collect{|cc, i|  //bottom row
+			this.prSetupCC(("buttonL"++(i+1)).asSymbol, \set, cc);
 		};
 	}
 }

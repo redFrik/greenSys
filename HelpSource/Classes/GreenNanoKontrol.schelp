@@ -20,7 +20,7 @@ INSTANCEMETHODS::
 
 PRIVATE:: prSetup
 
-METHOD:: ctrl, knobs, sliders, buttons1, buttons2
+METHOD:: ctrl, knobs, sliders, buttonsH, buttonsL
 Group of LINK::Classes/CV:: instances as an LINK::Classes/Array::.
 
 
@@ -44,10 +44,11 @@ f= {|cv, val| (val*1000).postln};
 g.slider1.addAction(f);  //several actions can be added
 g.slider1.removeAction(f);  //and removed
 
-g.button1_1.value;  //top button next to slider1
-g.button1_1.action_({|cv, val| ("button1_1 changed value to"+val).postln});
-g.button1_1.value_(1);  //set also triggers the action
-g.button1_1.value_(0);
+g.buttonH1.value;  //top row, first column button - next to slider1
+g.buttonH1.action_({|cv, val| ("buttonH1 changed value to"+val).postln});
+g.buttonH1.value_(1);  //set also triggers the action
+g.buttonH1.value_(0);
+g.buttonL2.value;  //bottom row, second column button - next to slider2
 
 g.gui;  //optional GUI
 

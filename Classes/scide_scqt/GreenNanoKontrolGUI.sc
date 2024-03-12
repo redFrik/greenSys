@@ -17,7 +17,7 @@ GreenNanoKontrolGUI : SCViewHolder {
 	}
 
 	initGreenNanoKontrolGUI {|parent, bounds, argNanoKontrol|
-		var ctrl, knobs, sliders, buttons1, buttons2;
+		var ctrl, knobs, sliders, buttonsH, buttonsL;
 
 		var skin= GUI.skins.guiCV;
 		var ctrlWidth= "<<".bounds(Font(*skin.fontSpecs)).width*2;
@@ -44,18 +44,18 @@ GreenNanoKontrolGUI : SCViewHolder {
 			.stringRotation_(0.5pi)
 		};
 
-		buttons1= nanoKontrol.buttons1.collect{|cv|
+		buttonsH= nanoKontrol.buttonsH.collect{|cv|
 			GUICVButton(ref: cv.ref, update:false)
 			.maxSize_(Size(20, 20))
 		};
 
-		buttons2= nanoKontrol.buttons2.collect{|cv|
+		buttonsL= nanoKontrol.buttonsL.collect{|cv|
 			GUICVButton(ref: cv.ref, update:false)
 			.maxSize_(Size(20, 20))
 		};
 
 		//--focus
-		focusActions= [ctrl, knobs, sliders, buttons1, buttons2].flat.collect{|v|
+		focusActions= [ctrl, knobs, sliders, buttonsH, buttonsL].flat.collect{|v|
 			var action= {if(v.hasFocus.not, {v.focus})};
 			v.cv.addAction(action);
 			[v.cv, action]
@@ -97,7 +97,7 @@ GreenNanoKontrolGUI : SCViewHolder {
 					knobs,
 					sliders.collect{|slider, i|
 						GridLayout.columns(
-							[buttons1[i], buttons2[i]],
+							[buttonsH[i], buttonsL[i]],
 							[[slider, rows:2]]
 						)
 					}

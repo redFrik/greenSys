@@ -1,7 +1,7 @@
 CLASS:: GreenNanoKontrol2GUI
-SUMMARY:: GUI for Korg v2
+SUMMARY:: GUI for Korg nanoKONTROL v2
 CATEGORIES:: Green>MIDI
-RELATED:: Classes/GreenNanoKontrol2, Overviews/greenSysOverview
+RELATED:: Classes/GreenNanoKontrol2, Classes/GreenNanoKontrolGUI, Overviews/greenSysOverview
 
 DESCRIPTION::
 GUI
